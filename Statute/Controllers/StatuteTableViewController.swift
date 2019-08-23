@@ -77,8 +77,6 @@ class StatuteTableViewController: UITableViewController, UISearchControllerDeleg
         }.resume()
         
     }
-    
-
 
     // MARK: - Table view data source
 

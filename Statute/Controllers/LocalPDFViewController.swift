@@ -75,11 +75,6 @@ class LocalPDFViewController: UIViewController {
             }
         }
         
-        
-        
-        
-        
-        
     }
     
     

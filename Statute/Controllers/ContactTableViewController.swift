@@ -25,10 +25,5 @@ class ContactTableViewController: UITableViewController {
 
 
     
-    
-
-    
-
-    
 
 }
