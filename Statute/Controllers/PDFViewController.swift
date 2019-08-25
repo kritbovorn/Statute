@@ -31,15 +31,17 @@ class PDFViewController: UIViewController {
         super.viewDidLoad()
 
         navigationController?.navigationBar.prefersLargeTitles = false
-        presentPDF()
+        
+        // Extension For  UIActivityIndicatorView()
+        setupIndicatorView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        presentPDF()
+        
         guard let statuteName = statute?.name else { return }
-        
-        
         
         let fileName = "\(statuteName).pdf"
         
@@ -50,12 +52,15 @@ class PDFViewController: UIViewController {
             save.isEnabled = false
         }
         
+        // Extension For  UIActivityIndicatorView()
+        hideIndicatorView()
         
     }
     
     override func viewDidLayoutSubviews() {
         pdfView.autoScales = true
     }
+    
     
     // FIXME: -  แสดง  PDF
     func presentPDF() {
@@ -126,28 +131,20 @@ class PDFViewController: UIViewController {
             }
 
             guard let data = data else { return }
-            
 
             do {
                 
-                
                 try data.write(to: temporaryPath)
                 
-                    
                     let activityController = UIActivityViewController(activityItems: [temporaryPath], applicationActivities: nil)
                     activityController.popoverPresentationController?.sourceView = self.view
                     
                     self.present(activityController, animated: true, completion: nil)
                 
-                
-
             }catch let er{
                 print("Error: \(er.localizedDescription)")
             }
         }.resume()
-        
-
-        
 
     }
        

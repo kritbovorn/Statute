@@ -20,7 +20,10 @@ class LocalPDFViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Extension For  UIActivityIndicatorView()
+        setupIndicatorView()
+        
+     
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,7 +41,6 @@ class LocalPDFViewController: UIViewController {
                     
                     data = try Data(contentsOf: pdfURL)
                 
-                    
                     pdfDocument = PDFDocument(url: pdfURL)
                     pdfView.document = pdfDocument
                     pdfView.autoScales = true
@@ -47,7 +49,11 @@ class LocalPDFViewController: UIViewController {
                 }
             }
         }
+        
+        // Extension For  UIActivityIndicatorView()
+        hideIndicatorView()
     }
+    
     
     @IBAction func shareTapped(_ sender: Any) {
         
@@ -76,10 +82,6 @@ class LocalPDFViewController: UIViewController {
         }
         
     }
-    
-    
-    
-
     
 
 }

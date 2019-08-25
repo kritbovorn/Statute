@@ -103,13 +103,6 @@ class StatuteTableViewController: UITableViewController, UISearchControllerDeleg
         return cell
     }
     
-    // FIXME: - UITableViewDelegate
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowPDF" {
@@ -123,8 +116,6 @@ class StatuteTableViewController: UITableViewController, UISearchControllerDeleg
     // FIXME: - UISearchBarDelegate
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        
         
         if searchText == "" {
             APIService.shared.decodableJsonFromURL(jsonString: jsonString) { (statutes) in

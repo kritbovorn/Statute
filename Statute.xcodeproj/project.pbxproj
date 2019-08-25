@@ -10,6 +10,7 @@
 		4857F8E4230B9A2C00DB1501 /* FavoriteCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857F8E3230B9A2C00DB1501 /* FavoriteCollectionViewController.swift */; };
 		4857F8E6230B9A5000DB1501 /* HistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857F8E5230B9A5000DB1501 /* HistoryCollectionViewCell.swift */; };
 		485F050E2306814700E0F698 /* StatuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485F050D2306814700E0F698 /* StatuteTableViewCell.swift */; };
+		486B098F231251B900BC3E64 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486B098E231251B900BC3E64 /* Extension+UIViewController.swift */; };
 		486DDFDC230E6682007A0FB6 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486DDFDB230E6682007A0FB6 /* ContactTableViewController.swift */; };
 		4873ACE822E2DE0500724BBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4873ACE722E2DE0500724BBA /* AppDelegate.swift */; };
 		4873ACEA22E2DE0500724BBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4873ACE922E2DE0500724BBA /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 		4857F8E3230B9A2C00DB1501 /* FavoriteCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewController.swift; sourceTree = "<group>"; };
 		4857F8E5230B9A5000DB1501 /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		485F050D2306814700E0F698 /* StatuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatuteTableViewCell.swift; sourceTree = "<group>"; };
+		486B098E231251B900BC3E64 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 		486DDFDB230E6682007A0FB6 /* ContactTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		4873ACE422E2DE0500724BBA /* Statute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Statute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4873ACE722E2DE0500724BBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		486B098D2312517500BC3E64 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				486B098E231251B900BC3E64 /* Extension+UIViewController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		4873ACDB22E2DE0400724BBA = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +110,7 @@
 		4873ACE622E2DE0500724BBA /* Statute */ = {
 			isa = PBXGroup;
 			children = (
+				486B098D2312517500BC3E64 /* Extension */,
 				485F050F2306C8A500E0F698 /* Controllers */,
 				485F050A23067FFF00E0F698 /* Views */,
 				48DF66A82305431400E17262 /* API */,
@@ -209,6 +220,7 @@
 				4873ACE822E2DE0500724BBA /* AppDelegate.swift in Sources */,
 				48A4A9CC22FEAF67007ECD7B /* ListTableViewController.swift in Sources */,
 				48A4A9CE22FEB969007ECD7B /* LocalPDFViewController.swift in Sources */,
+				486B098F231251B900BC3E64 /* Extension+UIViewController.swift in Sources */,
 				486DDFDC230E6682007A0FB6 /* ContactTableViewController.swift in Sources */,
 				487D2F0022FDCABF007F889E /* Statute.swift in Sources */,
 				48DF66AA2305432B00E17262 /* APIService.swift in Sources */,
