@@ -29,8 +29,13 @@ class StatuteTableViewController: UITableViewController, UISearchControllerDeleg
         
         searchBarSetup()
         
-        APIService.shared.decodableJsonFromURL(jsonString: jsonString) { (statues) in
-            self.statutes = statues
+        APIService.shared.decodableJsonFromURL(jsonString: jsonString) { (statutes, isError) in
+            
+            // Show Message when have Error()
+            self.setMessageURLError(isError: isError)
+            
+            guard let statutes = statutes else { return }
+            self.statutes = statutes
             self.tableView.reloadData()
         }
     }
@@ -77,6 +82,27 @@ class StatuteTableViewController: UITableViewController, UISearchControllerDeleg
         }.resume()
         
     }
+    
+    // FIXME: -  Show Alert Message when have error from URLSession()
+    
+    fileprivate func setMessageURLError(isError: URLError?) {
+        
+        if isError != nil {
+            
+            let isErr = isError?.code.rawValue
+            if isErr == NSURLErrorNotConnectedToInternet {
+                
+                self.alertError(title: "Oops!!!", message: "รบกวนตรวจสอบ การเชื่อมต่ออินเตอร์เน็ต \nกรุณาลองใหม่อีกครั้ง นะครับ.")
+                
+            }else if isErr == NSURLErrorBadServerResponse {
+                self.alertError(title: "Oops!!!", message: "เกิดข้อผิดพลาดในการเชื่อมต่อ Server.")
+                
+            }else{
+                self.alertError(title: "Oops!!!", message: "เกิดปัญหาข้อผิดพลาด กรุณาลองใหม่อีกครั้ง นะครับ.")
+                
+            }
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -113,34 +139,46 @@ class StatuteTableViewController: UITableViewController, UISearchControllerDeleg
         }
     }
     
-    // FIXME: - UISearchBarDelegate
+     //FIXME: - UISearchBarDelegate
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+
         if searchText == "" {
-            APIService.shared.decodableJsonFromURL(jsonString: jsonString) { (statutes) in
+            APIService.shared.decodableJsonFromURL(jsonString: jsonString) { (statutes, isError) in
+
+                // Show Message when have Error()
+                self.setMessageURLError(isError: isError)
+
+                // Get Data From json
+                guard let statutes = statutes else { return }
                 self.statutes = statutes
                 self.tableView.reloadData()
             }
         }else{
-            
-            APIService.shared.decodableJsonFromURL(jsonString: jsonString) { (statutes) in
+
+            APIService.shared.decodableJsonFromURL(jsonString: jsonString) { (statutes, isError) in
+
+                // Show Message when have Error()
+                self.setMessageURLError(isError: isError)
+                
+                // Get Data From json
+                guard let statutes = statutes else { return }
                 let filteredStatutes = statutes.filter({$0.name.lowercased().contains(searchText.lowercased())})
                 self.statutes = filteredStatutes
-                
+
                 self.tableView.reloadData()
             }
-            
+
         }
     }
 
     
     // FIXME: - Action Method
-    
+
     @IBAction func refreshTapped(_ sender: Any) {
         decodeJsonData()
     }
-    
+
     
 
 }

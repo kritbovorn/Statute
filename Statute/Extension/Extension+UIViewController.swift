@@ -26,4 +26,12 @@ extension UIViewController {
         indicatorView?.stopAnimating()
         indicatorView?.removeFromSuperview()
     }
+    
+    func alertError(title: String, message: String) {
+        
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "ยกเลิก", style: .cancel, handler: nil))
+        self.present(alertView, animated: true, completion: nil)
+
+    }
 }

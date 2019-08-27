@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class APIService {
     
     static let shared = APIService()
@@ -15,30 +16,31 @@ class APIService {
 //    let jsonString = "https://tyre.in.th/Statute/JsonStat.php"
     //let jsonString = "https://tyre.in.th/Statute/JsonStatute.php"
     
-    func decodableJsonFromURL(jsonString: String, completionHandler: @escaping ([Statute]) -> ()) {
+    func decodableJsonFromURL(jsonString: String, completionHandler: @escaping ([Statute]?, URLError?) -> ()) {
         
         guard let url = URL(string: jsonString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             DispatchQueue.main.async {
-                if let error = err {
-                    print("error\(error.localizedDescription)")
+                
+                // เช็ค Error()
+                if let urlErr = err {
+                    let urlError = (urlErr as! URLError)
+                    print("!!!!!!! Errrrrrrr = ", urlError.code)
+                    
+                    
+                    completionHandler(nil, urlError)
+                    return
                 }
                 
+                //  Get data()
                 guard let data = data else { return }
-                
-                print("This is data:", data)
                 
                 do {
                     
                     let statutes = try JSONDecoder().decode([Statute].self, from: data)
                     
-        
-                    completionHandler(statutes)
-//                    let filteredStatutes = self.statutes.filter({$0.name.lowercased().contains(searchText.lowercased())})
-//                    self.statutes = filteredStatutes
-//                    self.tableView.reloadData()
-        
+                    completionHandler(statutes, nil)
                     
                 }catch let jsonErr {
                     print("mistake\(jsonErr.localizedDescription)")
